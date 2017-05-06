@@ -21,6 +21,8 @@
 @property(nonatomic, strong)  NSMutableArray<UIButton *> *titleButtons;
 /** 指示器 */
 @property(nonatomic, weak)  UIView *indicatorView;
+/** 配置信息 */
+@property(nonatomic, strong)  CFSegmentBarConfig *config;
 @end
 
 
@@ -46,9 +48,9 @@ static CGFloat const defaultMinMargin = 30;
         UIButton * btn = [[UIButton alloc] init];
         btn.tag = self.titleButtons.count;
         [btn setTitle:title forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-        btn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [btn setTitleColor:self.config.titleColor forState:UIControlStateNormal];
+        [btn setTitleColor:self.config.selectedColor forState:UIControlStateSelected];
+        btn.titleLabel.font = self.config.titleFont;
         [btn sizeToFit];
         _totalWidth += btn.cf_width;
         [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -82,7 +84,29 @@ static CGFloat const defaultMinMargin = 30;
     UIButton * btn = self.titleButtons[selectedIndex];
     [self btnClick:btn];
 }
+- (void)updateWithConfig:(void(^)(CFSegmentBarConfig *))config
+{
+    if (config) {
+        config(self.config);
+        // 重新计算按钮总宽
+        _totalWidth = 0 ;
+        for (UIButton * btn in self.titleButtons) {
+            [btn setTitleColor:self.config.titleColor forState:UIControlStateNormal];
+            [btn setTitleColor:self.config.selectedColor forState:UIControlStateSelected];
+            btn.titleLabel.font = self.config.titleFont;
+            [btn sizeToFit];
+            _totalWidth += btn.cf_width;
+        }
+        // 添加需要重新布局标记
+        [self setNeedsLayout];
+        // 重新布局
+        [self layoutIfNeeded];
 
+        self.indicatorView.backgroundColor = self.config.indicatorColor;
+        UIButton * btn = self.titleButtons[self.selectedIndex];
+        [self btnClick:btn];
+    }
+}
 
 #pragma mark -
 #pragma mark - =============== 私有方法 ===============
@@ -96,6 +120,13 @@ static CGFloat const defaultMinMargin = 30;
     _selectedButton.selected = NO;
     btn.selected = YES;
     _selectedButton = btn;
+    _selectedIndex = btn.tag;
+    // 设置指示器宽度 和中心店 X
+    [UIView animateWithDuration:0.25 animations:^{
+        self.indicatorView.cf_width = btn.cf_width + self.config.indicatorExtraWidth * 2;
+        self.indicatorView.cf_centerX = btn.cf_centerX;
+        self.indicatorView.cf_height = self.config.indicatorHeight;
+    }];
     // 使对应的按钮居中
     CGFloat offsetX = btn.cf_x - self.containerView.cf_width * 0.5;
     // 边界处理
@@ -166,11 +197,20 @@ static CGFloat const defaultMinMargin = 30;
 {
     if (!_indicatorView)
     {
-        UIView * indicatorView =  [[UIView alloc] init];
-        [self addSubview:indicatorView];
+        UIView * indicatorView =  [[UIView alloc] initWithFrame:CGRectMake(0, self.cf_height - self.config.indicatorHeight, 0, self.config.indicatorHeight)];
+        indicatorView.backgroundColor = self.config.indicatorColor;
+        [self.containerView addSubview:indicatorView];
         _indicatorView = indicatorView;
     }
     return _indicatorView;
 }
 
+- (CFSegmentBarConfig *)config
+{
+    if (!_config)
+    {
+        _config =  [CFSegmentBarConfig defaultConfig];
+    }
+    return _config;
+}
 @end
