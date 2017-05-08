@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0406D3E51EBE2191009EFDED /* CFSegmentBarConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 0406D3E41EBE2191009EFDED /* CFSegmentBarConfig.m */; };
-		04C21E9B1EBE02CF00E180B5 /* CFSegmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C21E9A1EBE02CF00E180B5 /* CFSegmentBar.m */; };
-		04C21E9E1EBE075400E180B5 /* UIView+CFSegmentBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C21E9D1EBE075400E180B5 /* UIView+CFSegmentBar.m */; };
 		420EE62B5D147A3682DC2091 /* Pods_CFSegmentBar_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BF39AD4B2B86F845A802126 /* Pods_CFSegmentBar_Example.framework */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -40,12 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0406D3E31EBE2191009EFDED /* CFSegmentBarConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFSegmentBarConfig.h; sourceTree = "<group>"; };
-		0406D3E41EBE2191009EFDED /* CFSegmentBarConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFSegmentBarConfig.m; sourceTree = "<group>"; };
-		04C21E991EBE02CF00E180B5 /* CFSegmentBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFSegmentBar.h; sourceTree = "<group>"; };
-		04C21E9A1EBE02CF00E180B5 /* CFSegmentBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFSegmentBar.m; sourceTree = "<group>"; };
-		04C21E9C1EBE075400E180B5 /* UIView+CFSegmentBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CFSegmentBar.h"; sourceTree = "<group>"; };
-		04C21E9D1EBE075400E180B5 /* UIView+CFSegmentBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CFSegmentBar.m"; sourceTree = "<group>"; };
 		09EFD8EFC61C469E2CC1DFF6 /* Pods-CFSegmentBar_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CFSegmentBar_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CFSegmentBar_Example/Pods-CFSegmentBar_Example.release.xcconfig"; sourceTree = "<group>"; };
 		233AB091C20DE2BB0A326F82 /* Pods_CFSegmentBar_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CFSegmentBar_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		263147CECD9881A410E6B48F /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -104,19 +95,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04C21E981EBE02BE00E180B5 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				04C21E991EBE02CF00E180B5 /* CFSegmentBar.h */,
-				04C21E9A1EBE02CF00E180B5 /* CFSegmentBar.m */,
-				0406D3E31EBE2191009EFDED /* CFSegmentBarConfig.h */,
-				0406D3E41EBE2191009EFDED /* CFSegmentBarConfig.m */,
-				04C21E9C1EBE075400E180B5 /* UIView+CFSegmentBar.h */,
-				04C21E9D1EBE075400E180B5 /* UIView+CFSegmentBar.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		0FC02D9EB47B3267BF54E2E2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,7 +143,6 @@
 		6003F593195388D20070C39A /* Example for CFSegmentBar */ = {
 			isa = PBXGroup;
 			children = (
-				04C21E981EBE02BE00E180B5 /* Classes */,
 				6003F59C195388D20070C39A /* CFAppDelegate.h */,
 				6003F59D195388D20070C39A /* CFAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -417,11 +394,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0406D3E51EBE2191009EFDED /* CFSegmentBarConfig.m in Sources */,
 				6003F59E195388D20070C39A /* CFAppDelegate.m in Sources */,
-				04C21E9E1EBE075400E180B5 /* UIView+CFSegmentBar.m in Sources */,
 				6003F5A7195388D20070C39A /* CFViewController.m in Sources */,
-				04C21E9B1EBE02CF00E180B5 /* CFSegmentBar.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

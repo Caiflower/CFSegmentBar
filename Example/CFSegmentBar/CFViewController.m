@@ -7,10 +7,12 @@
 //
 
 #import "CFViewController.h"
-#import "UIView+CFSegmentBar.h"
-#import "CFSegmentBar.h"
+#import <CFSegmentBar/CFSegmentBar.h>
+#import <CFSegmentBar/UIView+CFSegmentBar.h>
+
+
 @interface CFViewController ()<CFSegmentBarDelegate>
-/** <#name#> */
+
 @property(nonatomic, strong) CFSegmentBar * segmentBar;
 @end
 
